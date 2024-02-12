@@ -15,7 +15,7 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
-
+  <base href="/">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -35,7 +35,7 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "1767077787";
+    const serviceWorkerVersion = "2263807774";
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
@@ -69,15 +69,43 @@
         if (files.length === 0) return;
         var file = files[0];
         var img = new Image();
-        img.onload = function () {
+        img.onload = async () => {
           // Create a canvas element for resizing and compressing
+          let quality = 0.9;
+          const maxWidth = 1000;
+          const maxHeight = 1200;
           var canvas = document.createElement('canvas');
           var ctx = canvas.getContext('2d');
-          canvas.width = img.width;
-          canvas.height = img.height;
-          ctx.drawImage(img, 0, 0, img.width, img.height);
+          let { width, height } = img;
+
+          // Calculate the new dimensions to maintain the aspect ratio
+          if (width > height) {
+            if (width > maxWidth) {
+              height *= maxWidth / width;
+              width = maxWidth;
+            }
+          } else {
+            if (height > maxHeight) {
+              width *= maxHeight / height;
+              height = maxHeight;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          ctx.drawImage(img, 0, 0, width, height);
+
+          let blob = await (await fetch(dataUrl)).blob();
+
           // Convert the canvas to a data URL with desired quality (0.5 = 50% quality)
           var dataUrl = canvas.toDataURL('image/jpeg', 0.5);
+
+          while (blob.size > 200 * 1024 && quality > 0.1) { // Adjust quality in loop
+            quality -= 0.1;
+            dataUrl = canvas.toDataURL('image/jpeg', quality);
+            blob = await (await fetch(dataUrl)).blob();
+          }
+
 
           // Call the Dart callback with the compressed image
           window[callbackName](dataUrl);
