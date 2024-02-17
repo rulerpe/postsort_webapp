@@ -16,7 +16,6 @@
     the `--base-href` argument provided to `flutter build`.
   -->
 
-
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
@@ -35,7 +34,7 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "2727885946";
+    const serviceWorkerVersion = "2171923416";
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
@@ -113,11 +112,12 @@
           // Call the Dart callback with the compressed image
           console.log('callback', dataUrl)
           window[callbackName](dataUrl);
+          input.remove();
         };
-        document.body.appendChild(input); // Append to DOM
-        input.style.opacity = '0.1';
         img.src = URL.createObjectURL(file);
       };
+      document.body.appendChild(input); // Append to DOM
+      input.style.opacity = '0.1';
       input.click();
     }
   </script>
