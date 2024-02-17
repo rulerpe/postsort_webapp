@@ -34,7 +34,7 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "550522080";
+    const serviceWorkerVersion = "1309941288";
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
@@ -62,7 +62,7 @@
       var input = document.createElement('input');
       input.type = 'file';
       input.accept = 'image/*';
-      input.capture = 'environment'; // Use 'user' for front camera on devices with multiple cameras
+      input.capture = false; // Use 'user' for front camera on devices with multiple cameras
       input.onchange = _ => {
         console.log('onchange')
         var files = Array.from(input.files);
