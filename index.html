@@ -34,7 +34,7 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "2171923416";
+    const serviceWorkerVersion = "4271953073";
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
@@ -64,13 +64,11 @@
       input.accept = 'image/*';
       input.capture = 'environment'; // Use 'user' for front camera on devices with multiple cameras
       input.onchange = _ => {
-        console.log('onchange')
         var files = Array.from(input.files);
         if (files.length === 0) return;
         var file = files[0];
         var img = new Image();
         img.onload = async () => {
-          console.log('onload')
           // Create a canvas element for resizing and compressing
           let quality = 0.9;
           const maxWidth = 1200;
@@ -96,7 +94,6 @@
           canvas.height = height;
           ctx.drawImage(img, 0, 0, width, height);
 
-          console.log('before fetch(dataUrl)', dataUrl)
           let blob = await (await fetch(dataUrl)).blob();
 
           // Convert the canvas to a data URL with desired quality (0.5 = 50% quality)
@@ -110,7 +107,6 @@
 
 
           // Call the Dart callback with the compressed image
-          console.log('callback', dataUrl)
           window[callbackName](dataUrl);
           input.remove();
         };
