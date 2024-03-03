@@ -8967,7 +8967,7 @@ A.e9(new A.ae(A.a([n],t.bI),l.ga3l(),t.tJ),!0,t.H)
 q=3
 l=$.mF
 s=6
-return A.H((l==null?$.mF=A.aju():l).uq('{\n    "UserAgent": "aws-amplify-cli/2.0",\n    "Version": "1.0",\n    "api": {\n        "plugins": {\n            "awsAPIPlugin": {\n                "postsortclient": {\n                    "endpointType": "GraphQL",\n                    "endpoint": "https://j7lleiiq3rcyncfcxmc4mnxh6a.appsync-api.us-west-1.amazonaws.com/graphql",\n                    "region": "us-west-1",\n                    "authorizationType": "API_KEY",\n                    "apiKey": "da2-yk33v2a6bfd33ne4xbscmu6uvu"\n                }\n            }\n        }\n    }\n}'),$async$ah8)
+return A.H((l==null?$.mF=A.aju():l).uq('{\n    "UserAgent": "aws-amplify-cli/2.0",\n    "Version": "1.0",\n    "api": {\n        "plugins": {\n            "awsAPIPlugin": {\n                "postsortclient": {\n                    "endpointType": "GraphQL",\n                    "endpoint": "https://j7lleiiq3rcyncfcxmc4mnxh6a.appsync-api.us-west-1.amazonaws.com/graphql",\n                    "region": "us-west-1",\n                    "authorizationType": "API_KEY",\n                    "apiKey": "da2-hc4ktec3ivbndkzadk56gnxcai"\n                }\n            }\n        }\n    }\n}'),$async$ah8)
 case 6:A.ep("Successfully configured Amplify \ud83c\udf89")
 q=1
 s=5
